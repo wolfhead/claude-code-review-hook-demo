@@ -1,0 +1,25 @@
+{
+  "name": "claude-code-review-hook-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests - this is a tool project\"",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wolfhead/claude-code-review-hook-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/wolfhead/claude-code-review-hook-demo/issues"
+  },
+  "homepage": "https://github.com/wolfhead/claude-code-review-hook-demo#readme",
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}
