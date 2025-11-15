@@ -3,9 +3,11 @@ node_modules/
 
 # Environment variables
 .env
+.claude-review.env
 
 # Logs
 *.log
 
 # OS files
 .DS_Store
+.husky
