@@ -71,26 +71,49 @@ git commit -m "docs: add comment to sum function"
 
 ## Custom API Configuration
 
-This demo includes an example configuration file. To use custom API settings:
+This demo includes an example configuration file showing how to use different API providers.
+
+### Setup
 
 ```bash
-# Copy the example config
+# 1. Copy the example config
 cp .claude-review.env.example .claude-review.env
 
-# Edit with your settings (standard Claude Code environment variables)
-# export ANTHROPIC_API_KEY=sk-ant-...
-# export ANTHROPIC_BASE_URL=https://api.anthropic.com
-# export ANTHROPIC_MODEL=claude-sonnet-4
+# 2. Edit with your API key and settings
+nano .claude-review.env  # or use your favorite editor
 ```
 
 The `.claude-review.env` file is ignored by git for security.
 
-### Example: Using DeepSeek
+### Example Configurations
 
+**Option 1: Anthropic Official API**
 ```bash
+export ANTHROPIC_API_KEY=sk-ant-your-key-here
+export ANTHROPIC_BASE_URL=https://api.anthropic.com
+export ANTHROPIC_MODEL=claude-sonnet-4-5-20250929
+```
+
+**Option 2: DeepSeek (Anthropic-compatible)**
+```bash
+export ANTHROPIC_API_KEY=sk-your-deepseek-key
 export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
-export ANTHROPIC_API_KEY=${YOUR_API_KEY}
-export API_TIMEOUT_MS=600000
 export ANTHROPIC_MODEL=deepseek-chat
+export API_TIMEOUT_MS=600000
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 ```
+
+**Option 3: Custom Proxy**
+```bash
+export ANTHROPIC_API_KEY=your-key
+export ANTHROPIC_BASE_URL=https://api.jiekou.ai/anthropic
+export ANTHROPIC_MODEL=claude-sonnet-4-5-20250929
+```
+
+### How It Works
+
+When you commit, the hook will:
+1. Load environment variables from `.claude-review.env`
+2. Display the configuration being used (with masked API key)
+3. Show the prompt file location and command for debugging
+4. Use those settings ONLY for the review (won't affect your normal Claude Code usage)
